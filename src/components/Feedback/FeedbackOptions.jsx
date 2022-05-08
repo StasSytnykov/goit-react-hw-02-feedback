@@ -1,28 +1,45 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
+import style from './FeedbackOptions.module.css';
 
 export class FeedbackOptions extends Component {
-  onCount = () => {
-    console.log(this.props);
+  onLeaveGoodFeedback = () => {
+    const { onLeaveFeedback, options } = this.props;
+    return onLeaveFeedback(options.find(option => option === 'good'));
   };
 
-  onLeaveGoodFeedback = () => this.props.onLeaveFeedback(this.props.options[0]);
+  onLeaveNeutralFeedback = () => {
+    const { onLeaveFeedback, options } = this.props;
+    return onLeaveFeedback(options.find(option => option === 'neutral'));
+  };
 
-  onLeaveNeutralFeedback = () =>
-    this.props.onLeaveFeedback(this.props.options[1]);
-
-  onLeaveBadFeedback = () => this.props.onLeaveFeedback(this.props.options[2]);
+  onLeaveBadFeedback = () => {
+    const { onLeaveFeedback, options } = this.props;
+    return onLeaveFeedback(options.find(option => option === 'bad'));
+  };
 
   render() {
     return (
-      <div>
-        <button type="button" onClick={this.onLeaveGoodFeedback}>
+      <div className={style.feedbackThumb}>
+        <button
+          className={style.feedbackButton}
+          type="button"
+          onClick={this.onLeaveGoodFeedback}
+        >
           Good
         </button>
-        <button type="button" onClick={this.onLeaveNeutralFeedback}>
+        <button
+          className={style.feedbackButton}
+          type="button"
+          onClick={this.onLeaveNeutralFeedback}
+        >
           Neutral
         </button>
-        <button type="button" onClick={this.onLeaveBadFeedback}>
+        <button
+          className={style.feedbackButton}
+          type="button"
+          onClick={this.onLeaveBadFeedback}
+        >
           Bad
         </button>
       </div>

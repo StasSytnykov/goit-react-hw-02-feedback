@@ -7,25 +7,13 @@ export class Statistics extends Component {
     return (
       <div>
         <ul>
+          <li>Good: {good}</li>
+          <li>Neutral: {neutral}</li>
+          <li>Bad: {bad}</li>
+          <li>Total: {total}</li>
           <li>
-            Good:
-            <span>{good}</span>
-          </li>
-          <li>
-            Neutral:
-            <span>{neutral}</span>
-          </li>
-          <li>
-            Bad:
-            <span>{bad}</span>
-          </li>
-          <li>
-            Total:
-            <span>{total}</span>
-          </li>
-          <li>
-            Positive feedback:
-            <span>{positiveFeedback ? positiveFeedback.toFixed(2) : 0}%</span>
+            Positive feedback:{' '}
+            {positiveFeedback ? positiveFeedback.toFixed(2) : 0}%
           </li>
         </ul>
       </div>
