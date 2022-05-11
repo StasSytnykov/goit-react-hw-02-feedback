@@ -3,42 +3,34 @@ import { Component } from 'react';
 import style from './FeedbackOptions.module.css';
 
 export class FeedbackOptions extends Component {
-  onLeaveGoodFeedback = () => {
-    const { onLeaveFeedback, options } = this.props;
-    return onLeaveFeedback(options.find(option => option === 'good'));
-  };
-
-  onLeaveNeutralFeedback = () => {
-    const { onLeaveFeedback, options } = this.props;
-    return onLeaveFeedback(options.find(option => option === 'neutral'));
-  };
-
-  onLeaveBadFeedback = () => {
-    const { onLeaveFeedback, options } = this.props;
-    return onLeaveFeedback(options.find(option => option === 'bad'));
-  };
-
   render() {
+    const { onLeaveFeedback, options } = this.props;
     return (
       <div className={style.feedbackThumb}>
         <button
           className={style.feedbackButton}
           type="button"
-          onClick={this.onLeaveGoodFeedback}
+          onClick={() =>
+            onLeaveFeedback(options.find(option => option === 'good'))
+          }
         >
           Good
         </button>
         <button
           className={style.feedbackButton}
           type="button"
-          onClick={this.onLeaveNeutralFeedback}
+          onClick={() =>
+            onLeaveFeedback(options.find(option => option === 'neutral'))
+          }
         >
           Neutral
         </button>
         <button
           className={style.feedbackButton}
           type="button"
-          onClick={this.onLeaveBadFeedback}
+          onClick={() =>
+            onLeaveFeedback(options.find(option => option === 'bad'))
+          }
         >
           Bad
         </button>
